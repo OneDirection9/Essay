@@ -8,7 +8,7 @@ deepmask github网址：
 - linux 或者 macos操作系统
   - 本人采用的是ubuntu 14.04 LTS系统
   
-      ![image](https://github.com/lingchenmsot/OpenObjectRecognition/blob/master/DeepMask/Markdown_images/OS_GPU.png?raw=true)
+      ![image](https://github.com/OneDirection9/Essay/blob/master/MarkdownImages/OS_GPU.png?raw=true)
 
 ---
 
@@ -65,7 +65,7 @@ deepmask github网址：
    >
    > - 如下图，说明安装成功
    >
-   > ![image](https://github.com/lingchenmsot/OpenObjectRecognition/blob/master/DeepMask/Markdown_images/deviceQuery.png?raw=true)
+   > ![image](https://github.com/OneDirection9/Essay/blob/master/MarkdownImages/deviceQuery.png?raw=true)
 
 2. **Torch安装**
    - 参考网址：[安装torch](http://torch.ch/docs/getting-started.html#_)
@@ -75,7 +75,7 @@ deepmask github网址：
       
    - 测试是否安装成功：
    
-      ![image](https://github.com/lingchenmsot/OpenObjectRecognition/blob/master/DeepMask/Markdown_images/th.png?raw=true)
+      ![image](https://github.com/OneDirection9/Essay/blob/master/MarkdownImages/th.png?raw=true)
     
    - 查看已经安装的包的命令：
    > luarocks list
