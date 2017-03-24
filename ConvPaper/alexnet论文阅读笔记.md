@@ -1,8 +1,6 @@
-[toc]
-
 # 引言
 
-[<<ImageNet Classification with Deep Convolutional Neural Networks>>](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf)
+[\<\<ImageNet Classification with Deep Convolutional Neural Networks\>\>](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf)
 
 文章比较老，但是该网络很经典。之后的ZF，VGG等网络都是在该网络基础上改造而来。
 
@@ -45,7 +43,7 @@ AlexNet在CONV1和CONV2的卷积层之后应用LRN，对卷积层的激活输出
 
 ## Overlapping Pooling
 
-使用了重叠的池化结构。正常的池化层的感知野z*z和步长s相等，本文的网络选择是z=3, s=2，这样的话就有一部分池化是重叠的。AlexNet网络的池化是max pooling。
+使用了重叠的池化结构。正常的池化层的感知野z\*z和步长s相等，本文的网络选择是z=3, s=2，这样的话就有一部分池化是重叠的。AlexNet网络的池化是max pooling。
 
 最后一个FC层，接下来使用的softmax分类器。
 
