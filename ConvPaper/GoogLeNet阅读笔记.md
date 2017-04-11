@@ -13,6 +13,8 @@
 
 解决上述两个问题的基本原则是将全连接改为**稀疏连接**。但是目前的计算架构对稀疏结构的支持不是很高效（查找和缓存失效是稀疏矩阵的瓶颈）。
 
+If the probability distribution of the data-set is representable by a large, very sparse deep neural network, then the optimal network topology can be constructed layer by layer by analyzing the correlation statistics of the activations of the last layer and clustering neurons with highly correlated outputs.
+
 本文希望能够获得一个结构，既能保证稀疏性，又能利用现有矩阵进行密集计算。
 
 # Architectural Details
