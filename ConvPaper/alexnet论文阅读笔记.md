@@ -66,7 +66,7 @@ dropout，在前面两个全连接层加入了dropout技术，随机丢弃掉一
 
 # ZF
 
-[ZF](http://www.cnblogs.com/taojake-ML/p/6287158.html)网络其结构没什么改进，只是将AlexNet第一层卷积核由11变成7；第二个卷积层步长由1变成2。ZF的主要贡献是提出了反卷积的方法可视化每个卷积层学习到的特征。
+论文[链接](https://www.cs.nyu.edu/~fergus/papers/zeilerECCV2014.pdf)在这儿，[ZF](http://www.cnblogs.com/taojake-ML/p/6287158.html)网络其结构没什么改进，只是将AlexNet第一层卷积核由11变成7；第二个卷积层步长由1变成2。ZF的主要贡献是提出了反卷积的方法可视化每个卷积层学习到的特征。
 
 > 注意论文开始的链接里面关于ZF的结构表格里面是不正确的，图片是正确的。
 
