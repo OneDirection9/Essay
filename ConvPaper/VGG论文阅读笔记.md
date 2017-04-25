@@ -5,7 +5,7 @@
 
 # 引言
 
-VGG论文名称为：[Very Deep Convolutional Networks For Large-Scale Image Recognition](https://arxiv.org/pdf/1409.1556.pdf)。
+VGG论文名称为： [Very Deep Convolutional Networks for Large-Scale Image Recognition](https://arxiv.org/pdf/1409.1556.pdf)。
 
 ZF网络在第一层卷积层的大小上就比Alexnet更加小，步长也更加小了。
 
