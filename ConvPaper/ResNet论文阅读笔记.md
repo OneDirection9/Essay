@@ -7,7 +7,7 @@
 
 # 引言
 
-ResNet的论文名称为[Deep Residual Learning for Image Recognition](https://arxiv.org/pdf/1512.03385.pdf)。
+ResNet的论文名称为 [Deep Residual Learning for Image Recognition](https://arxiv.org/pdf/1512.03385.pdf)。
 
 ResNet网络是微软亚研院提出的，在2015年的ImageNet和COCO 2015竞赛上获得以下项目的第一名：ImageNet detection, ImageNet localization, COCO detection, COCO segmentation。该网络结构主要的特点是跳跃连接，下面对论文的一个简单解读。
 
