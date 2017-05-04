@@ -22,13 +22,15 @@ R-CNN由三个模块组成：
 
 1. Region proposals: 通过 selective search 算法从原始图片中提取出大概2000个 proposals 。
 
-2. Feature extraction: 利用 AlexNet 从每个 proposal 中提取4096维度的特征向量。在将 proposal 输入 CNN 之前需要将其转换为固定的大小。
+2. Feature extraction: 利用 AlexNet 从每个 proposal 中提取4096维度的特征向量。*在将 proposal 输入 CNN 之前需要将其转换为固定的大小。*
 
 ## Test-time detection
 
-测试的时候从测试图片中提取出大概2000个 proposals 。将 proposals 然后送入 CNN 提取特征。然后对每个类别，利用为该类别训练的 SVM 对提取出的特征进行打分。然后为每个类别打分好的 proposals 进行 **non-maximum suppression** ，目的是为了降低 bounding box 的重合度。
+测试的时候从测试图片中提取出大概2000个 proposals 。将 proposals 然后送入 CNN 提取特征。然后对每个类别，利用为该类别训练的 SVM 对提取出的特征进行打分。这样得到 proposal 与每个类别对应的分数。然后进行 **non-maximum suppression** ，目的是为了降低 bounding box 的重合度。
 
 > 应该是2000个 proposals 都被每个类别的 SVM 打分，然后每个类别对这个2000个 proposals 分别进行 NMS。
+>
+> 得到的新 bounding box 并不会覆盖原有的 box，会单独存储起来。
 >
 > 代码里面是每个类别大于某个阈值的 proposals 才进行 NMS。
 
@@ -49,7 +51,11 @@ R-CNN由三个模块组成：
 
 # 总结
 
-论文里面说测试的使用 NMS，这样可以减少输出的 bounding box 的个数。在训练的时候会调用 bounding box regressor 来矫正 bounding box 的位置。我的理解是训练的时候不会使用 NMS，而只使用 bounding box regressor。在测试的时候会进行 bounding box regression，这样就生成了 2000*N 个 box，会对这么多个 box 按类别进行 NMS。
+论文里面说测试的时候使用 NMS，这样可以减少输出的 bounding box 的个数。在训练的时候会调用 bounding box regressor 来矫正 bounding box 的位置。
+
+我的理解是训练的时候不会使用 NMS，而只使用 bounding box regressor。使用 bounding box regressor 的条件是 proposal 与 ground truth 是线性接近的，不然就没有意义。论文里面作者会对 proposal 与 ground truth 有最大 IoU 的（P, G）并且 IoU 大于0.6（交叉验证得到该值）才进行 bounding box regression（有可能 proposal 与多个  ground truth 有重叠，但只选取 IoU 最大的那个）。
+
+在测试的时候对每个proposal进行打分之后，就会预测它新的位置。理论上可以继续迭代对新的位置重新打分，但是这样并没有提高正确率，所以只进行一次即可。然后再进行NMS。
 
 RCNN的优缺点：
 
