@@ -39,6 +39,20 @@ replace with bar (y/n/a/q/l/^E/^Y)?
 
 `y`表示替换，`n`表示不替换，`a`表示替换所有，`q`表示退出查找模式，`l`表示替换当前位置并退出，`^E`和`^Y`是光标移动快捷键。
 
+# 删除特定的行
+
+1. 删除包含特定字符的行：
+   ```shell
+   g/pattern/d
+   ```   
+
+2. 删除不包含指定字符的行：
+   
+   ```shell
+   v/pattern/d
+   g!/pattern/d
+   ```
+
 ***
 
 Author: Zhipeng Han
