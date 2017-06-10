@@ -53,7 +53,9 @@ replace with bar (y/n/a/q/l/^E/^Y)?
    g!/pattern/d
    ```
 
-# 替换某个字符为换行
+# 使用技巧
+
+## 替换某个字符为换行
 
 When searching: `\n` is newline, `\r` is CR (carriage return = Ctrl-M = ^M)
 
@@ -64,6 +66,15 @@ When replacing: `\r` is newline, `\n` is a null byte (0×00).
 字符串查找时，`\n` 是换行，`\r` 是回车，也就是经常会看到的 ^M（备注-1）。
 
 字符串替换时，`\r` 是换行，`\n` 是空字符（0×00）。
+
+## 交换字符串的位置
+
+把文中的所有字符串“abc……xyz”替换为“xyz……abc”可以有下列写法
+
+```shell
+:%s/abc\(.*\)xyz/xyz\1abc/g
+:%s/\(abc\)\(.*\)\(xyz\)/\3\2\1/g
+```
 
 ***
 
