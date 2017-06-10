@@ -53,6 +53,18 @@ replace with bar (y/n/a/q/l/^E/^Y)?
    g!/pattern/d
    ```
 
+# 替换某个字符为换行
+
+When searching: `\n` is newline, `\r` is CR (carriage return = Ctrl-M = ^M)
+
+When replacing: `\r` is newline, `\n` is a null byte (0×00).
+
+意思是：
+
+字符串查找时，`\n` 是换行，`\r` 是回车，也就是经常会看到的 ^M（备注-1）。
+
+字符串替换时，`\r` 是换行，`\n` 是空字符（0×00）。
+
 ***
 
 Author: Zhipeng Han
