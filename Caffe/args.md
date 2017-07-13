@@ -18,10 +18,7 @@ caffe <command> <args>
 ./build/tools/caffe train --solver=examples/mnist/lenet_solver/prototxt
 
 # test
-./build/tools/caffe.bin test \
--model exmaples/mnist/lenet_train_test.prototxt \
--weights examples/mnist/lenet_iter_10000.caffemodel \
--iterations 100
+./build/tools/caffe.bin test -model exmaples/mnist/lenet_train_test.prototxt -weights examples/mnist/lenet_iter_10000.caffemodel -iterations 100
 ```
 
 
@@ -47,19 +44,27 @@ args列举了以下几种：
 
 - `-solver`：**必选参数**。一个protocol buffer类型的文件，即模型的配置文件。如：
 
-   `# ./build/tools/caffe train -solver examples/mnist/lenet_solver.prototxt`
+   ```
+   # ./build/tools/caffe train -solver examples/mnist/lenet_solver.prototxt
+   ```
 
 - `-gpu`: 可选参数。该参数用来指定用哪一块gpu运行，根据gpu的id进行选择，如果设置为`-gpu all`则使用所有的gpu运行。如使用第二块gpu运行：
 
-   `# ./build/tools/caffe train -solver examples/mnist/lenet_solver.prototxt -gpu 2`
+   ```
+   # ./build/tools/caffe train -solver examples/mnist/lenet_solver.prototxt -gpu 2
+   ```
 
 - `-snapshot`:可选参数。该参数用来从快照（snapshot)中恢复训练。可以在solver配置文件设置快照，保存solverstate。如：
 
-   `# ./build/tools/caffe train -solver examples/mnist/lenet_solver.prototxt -snapshot examples/mnist/lenet_iter_5000.solverstate`
+   ```
+   # ./build/tools/caffe train -solver examples/mnist/lenet_solver.prototxt -snapshot examples/mnist/lenet_iter_5000.solverstate
+   ```
 
 - `-weights`:可选参数。用预先训练好的权重来fine-tuning模型，需要一个caffemodel，不能和`-snapshot`同时使用。如：
 
-`# ./build/tools/caffe train -solver examples/finetuning_on_flickr_style/solver.prototxt -weights models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel`
+   ```
+   # ./build/tools/caffe train -solver examples/finetuning_on_flickr_style/solver.prototxt -weights models/bvlc_reference_caffenet/bvlc_reference_caffenet.caffemodel
+   ```
 
 - `-iterations`: 可选参数，迭代次数，默认为50。如果在配置文件文件中没有设定迭代次数，则默认迭代50次。
 
@@ -74,7 +79,9 @@ args列举了以下几种：
 
 test参数用在测试阶段，用于最终结果的输出，要模型配置文件中我们可以设定需要输入accuracy还是loss. 假设我们要在验证集中验证已经训练好的模型，就可以这样写
 
-   `# ./build/tools/caffe test -model examples/mnist/lenet_train_test.prototxt -weights examples/mnist/lenet_iter_10000.caffemodel -gpu 0 -iterations 100`
+   ```
+   # ./build/tools/caffe test -model examples/mnist/lenet_train_test.prototxt -weights examples/mnist/lenet_iter_10000.caffemodel -gpu 0 -iterations 100
+   ```
 
 这个例子比较长，不仅用到了test参数，还用到了`-model`, `-weights`, `-gpu`和`-iteration`四个参数。意思是利用训练好了的权重（-weight)，输入到测试模型中(-model)，用编号为0的gpu(-gpu)测试100次(-iteration)。
 
@@ -83,14 +90,14 @@ test参数用在测试阶段，用于最终结果的输出，要模型配置文�
 time参数用来在屏幕上显示程序运行时间。如：
 
 ```shell
-   # 这个例子用来在屏幕上显示lenet模型迭代10次所使用的时间。包括每次迭代的forward和backward所用的时间，也包括每层forward和backward所用的平均时间。
-   ./build/tools/caffe time -model examples/mnist/lenet_train_test.prototxt -iterations 10
+# 这个例子用来在屏幕上显示lenet模型迭代10次所使用的时间。包括每次迭代的forward和backward所用的时间，也包括每层forward和backward所用的平均时间。
+./build/tools/caffe time -model examples/mnist/lenet_train_test.prototxt -iterations 10
 
-   # 这个例子用来在屏幕上显示lenet模型用gpu迭代50次所使用的时间。
-   ./build/tools/caffe time -model examples/mnist/lenet_train_test.prototxt -gpu 0`
+# 这个例子用来在屏幕上显示lenet模型用gpu迭代50次所使用的时间。
+./build/tools/caffe time -model examples/mnist/lenet_train_test.prototxt -gpu 0`
 
-   # 利用给定的权重，利用第一块gpu，迭代10次lenet模型所用的时间。
-   ./build/tools/caffe time -model examples/mnist/lenet_train_test.prototxt -weights examples/mnist/lenet_iter_10000.caffemodel -gpu 0 -iterations 10
+# 利用给定的权重，利用第一块gpu，迭代10次lenet模型所用的时间。
+./build/tools/caffe time -model examples/mnist/lenet_train_test.prototxt -weights examples/mnist/lenet_iter_10000.caffemodel -gpu 0 -iterations 10
 ```
 
 
