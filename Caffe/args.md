@@ -39,9 +39,6 @@ command总共有以下4种：
 
 args列举了以下几种：
 
-
-## train
-
 - `-solver`：**必选参数**。一个protocol buffer类型的文件，即模型的配置文件。如：
 
    ```
@@ -74,6 +71,13 @@ args列举了以下几种：
 
 - `-sigint_effect`: 可选参数。用来设定当程序发生键盘中止事件时（ctrl+c), 执行的操作，可以设置为`snapshot`, `stop`或`none`, 默认为`stop`
 
+
+## train
+
+`caffe train`可以从头开始学习模型、从已保存的快照中恢复学习或添加新数据进行fine-tunes。
+   - 具体来说，所有训练需要通过`-solver solver.prototxt`参数进行求解器配置；
+   - 恢复需要使用`-snapshot model_iter_1000.solverstate`参数来加载求解程序快照；
+   - fine-tunes微调需要模型初始化的`-weights model.caffemodel`参数。
 
 ## test
 
