@@ -1,0 +1,14 @@
+[alias]
+	st = status
+	co = checkout
+	cm = commit
+	ls = log --pretty=oneline
+	br = branch
+[core]
+	editor = vim
+	whitespace = cr-at-eol
+[user]
+	email = han_hans@apple.com
+	name = Hans Han
+[push]
+	default = simple
