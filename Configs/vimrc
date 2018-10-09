@@ -1,5 +1,5 @@
 " settings for powerline
-set rtp+=/Users/Warmer/Library/Python/2.7/lib/python/site-packages/powerline/bindings/vim
+set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim
 set nocompatible
 set t_Co=256
 
