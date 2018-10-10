@@ -4,9 +4,6 @@ set nocompatible
 set t_Co=256
 
 let g:minBufExplForceSyntaxEnable = 1
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
 
 set laststatus=2 
 set guifont=Source\ Code\ Pro\ for\ Powerline:h12 
