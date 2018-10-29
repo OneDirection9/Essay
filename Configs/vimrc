@@ -76,6 +76,10 @@ au FileType java,php setl tabstop=4
 " 高亮搜索的字符串
 set hlsearch
 
+set incsearch
+
+" 大写字符大小写敏感，小写字符大小写不敏感
+set ignorecase smartcase
 " 检测文件的类型
 filetype on
 filetype plugin on
