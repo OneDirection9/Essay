@@ -7,8 +7,5 @@
 [core]
 	editor = vim
 	whitespace = cr-at-eol
-[user]
-	email = han_hans@apple.com
-	name = Hans Han
 [push]
 	default = simple
