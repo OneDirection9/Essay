@@ -1,6 +1,24 @@
+" Settings For Bundle
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+" alternatively, pass a path where Vundle should install plugins
+call vundle#begin('~/.vim/bundle/')
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" Awesome python autocompletion with Vim
+Plugin 'davidhalter/jedi-vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+
 " settings for powerline
 set rtp+=$HOME/.local/lib/python3.6/site-packages/powerline/bindings/vim
-set nocompatible
 set t_Co=256
 
 let g:minBufExplForceSyntaxEnable = 1
@@ -8,7 +26,6 @@ let g:minBufExplForceSyntaxEnable = 1
 set laststatus=2 
 set guifont=Source\ Code\ Pro\ for\ Powerline:h12 
 set noshowmode
-
 
 " 显示行号
 set number
