@@ -4,7 +4,7 @@
 
 ## Introduction
 
-Put all my notes here, including algorithm, programming languaeg, deep leanring, etc. Notes are organized in `book -> section -> page` format such as `Microsoft OneNote`.
+Put all my notes here, including algorithm, programming language, deep leanring, etc. Notes are organized in `book -> section -> page` format such as `Microsoft OneNote`.
 
 - [Algorithm](Algorithm)
 - [Progamming Language](Programming-Language)
