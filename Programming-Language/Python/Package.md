@@ -10,7 +10,7 @@
 
 ## Hydra
 
-[Documentation](https://hydra.cc/docs/intro/) | [GitHub Code Repository](https://github.com/facebookresearch/hydra)
+[Documentation](https://hydra.cc/docs/intro/) | [GitHub Repository](https://github.com/facebookresearch/hydra)
 
 - [optional](https://hydra.cc/docs/patterns/specializing_config/#optional)
 
@@ -20,3 +20,106 @@
 
 - [Variable interpolation](https://omegaconf.readthedocs.io/en/latest/usage.html#variable-interpolation)
 - [Custom resolvers](https://omegaconf.readthedocs.io/en/latest/custom_resolvers.html#)
+
+## isort
+
+[Documentation](https://pycqa.github.io/isort/) | [GitHub Repository](https://github.com/PyCQA/isort)
+
+Configuration:
+
+```toml
+# Put in pyproject.toml
+[tool.isort]
+profile = "black"
+line_length = 100
+multi_line_output = 3
+include_trailing_comma = true
+default_section= "FIRSTPARTY"
+sections= ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+no_lines_before = ["STDLIB", "LOCALFOLDER"]
+```
+
+## black
+
+[Documentation](https://black.readthedocs.io/en/stable/) | [GitHub Repository](https://github.com/psf/black)
+
+Configuration:
+
+```toml
+# Put in pyproject.toml
+[tool.black]
+line-length = 100
+include = '\.pyi?$'
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | _build
+    | buck-out
+    | build
+    | dist
+  )/
+)
+'''
+```
+
+## flake8
+
+[Documentation](https://flake8.pycqa.org/en/latest/) | [GitHub Repository](https://github.com/PyCQA/flake8)
+
+Configutation:
+
+```cfg
+# Put in setup.cfg
+[flake8]
+ignore = W503, E203, E221, C901, C408, E741, C407, E741, C404
+# C404 dict comprehension ignored due to https://github.com/pytorch/pytorch/issues/41448
+max-line-length = 100
+max-complexity = 18
+select = B,C,E,F,W,T4,B9
+exclude = build
+per-file-ignores = **/__init__.py:F401,F403
+```
+
+## pre-commit
+
+[Documentation](https://pre-commit.com/) | [GitHub Repository](https://github.com/pre-commit/pre-commit)
+
+Configuration:
+
+```yaml
+# Put in .pre-commit-config.yaml
+exclude: ^tests/data/
+repos:
+- repo: https://gitlab.com/pycqa/flake8
+  rev: 3.8.4
+  hooks:
+    - id: flake8
+      additional_dependencies: ["flake8-bugbear", "flake8-comprehensions"]
+- repo: https://github.com/timothycrosley/isort
+  rev: 5.6.4
+  hooks:
+    - id: isort
+- repo: https://github.com/psf/black
+  rev: 20.8b1
+  hooks:
+    - id: black
+      language_version: python3
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v3.1.0
+  hooks:
+    - id: trailing-whitespace
+    - id: check-yaml
+      args: ['--unsafe']
+    - id: end-of-file-fixer
+    - id: requirements-txt-fixer
+    - id: fix-encoding-pragma
+      args: ['--remove']
+    - id: mixed-line-ending
+      args: ['--fix=lf']
+```
