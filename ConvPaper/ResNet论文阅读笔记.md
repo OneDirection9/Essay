@@ -1,9 +1,10 @@
 ### Content
+
 1. [Introduction](#introduction)
-2. [Related Work](#related-work)
-3. [Deep Residual Learning](#deep-residual-learning)
-4. [Experiments](#experiments)
-5. [总结](#总结)
+1. [Related Work](#related-work)
+1. [Deep Residual Learning](#deep-residual-learning)
+1. [Experiments](#experiments)
+1. [总结](#%E6%80%BB%E7%BB%93)
 
 # 引言
 
@@ -36,7 +37,7 @@ ResNet网络是微软亚研院提出的，在2015年的ImageNet和COCO 2015竞�
 ResNet的网络结构与highway network类似，对比如下：
 
 1. DRN的shortcut connections一直是输入s，并没有其它参数，学习比较简单。而且一直传递x，每个模块只学习残差F(x)，网络稳定而且容易学习。
-2. DRN证明了随着网络深度的增加，性能变好。而highway network并没有证明。
+1. DRN证明了随着网络深度的增加，性能变好。而highway network并没有证明。
 
 > 实际运用中，DRN中的shortcut有些是带有参数的，因为有的模块有降维操作，输入输出的维度不一样。
 
@@ -62,17 +63,17 @@ Degradation问题说明原本的网络通过非线性层学习Identity mapping�
 
 ## Network Architectures
 
-**Plain Network**的设计受VGG的启发，主要采用3*3的卷积核，遵循以下两个规则：
+**Plain Network**的设计受VGG的启发，主要采用3\*3的卷积核，遵循以下两个规则：
 
 1. 对于相同输出特征图尺寸，卷积层有相同个数的滤波器；
-2. 如果特征图尺寸缩小一半，滤波器个数加倍以保持每个层的计算复杂度。
+1. 如果特征图尺寸缩小一半，滤波器个数加倍以保持每个层的计算复杂度。
 
 还通过步长为2的卷积层直接进行降采样。去除了全连接层，参数相比VGG-19大幅度降低。
 
 **Residual Network**基于plain network的基础上，加上了shortcut。当维度上升的时候，加入shortcut有以下两个选择：
 
 1. 对shorcut加上zero padding，来达到同等维度。该方法并不需要额外的参数。
-2. Linear Projection来实现维度变换。（通过1*1的卷积，来达到同等维度的目的。）
+1. Linear Projection来实现维度变换。（通过1\*1的卷积，来达到同等维度的目的。）
 
 网络结构如下：
 
@@ -82,13 +83,13 @@ Degradation问题说明原本的网络通过非线性层学习Identity mapping�
 
 网络的实现细节。
 
-1. 短边随机缩放到[256, 480]，从图片或者水平变换的图片中截取224*224大小的图片，每个像素减去像素的平均值。
-2. standard color augmentaiton（AlexNet论文里面data augmentation章节的第二个方法吧，暂时不太懂）
-3. 在每个卷积之后，激活之前，加入了Batch normalization。
-4. 随机梯度下降方法，mini-bach的大小为256.
-5. 学习率初始化为0.1，当错误率停止下降的时候，将学习率除以10.
-6. 采用动量更新，momentum设置为0.9
-7. 不采用dropout
+1. 短边随机缩放到\[256, 480\]，从图片或者水平变换的图片中截取224\*224大小的图片，每个像素减去像素的平均值。
+1. standard color augmentaiton（AlexNet论文里面data augmentation章节的第二个方法吧，暂时不太懂）
+1. 在每个卷积之后，激活之前，加入了Batch normalization。
+1. 随机梯度下降方法，mini-bach的大小为256.
+1. 学习率初始化为0.1，当错误率停止下降的时候，将学习率除以10.
+1. 采用动量更新，momentum设置为0.9
+1. 不采用dropout
 
 测试采用类似于AlexNet的方法，从四个角和中心截取4个patch，并水平翻转得到总共10个patch，取这个10个的平均值。
 
@@ -101,9 +102,9 @@ Degradation问题说明原本的网络通过非线性层学习Identity mapping�
 ResNet的三种评估方法：
 
 1. A：zero-padding shortcuts are used for increasing dimensions, and all shortcuts are parameterfree.
-2. B：projection shortcuts are used for increasing dimensions, and other
-shortcuts are identity.
-3. C：all shortcuts are projections.
+1. B：projection shortcuts are used for increasing dimensions, and other
+   shortcuts are identity.
+1. C：all shortcuts are projections.
 
 ![ResNet_Table3](https://github.com/OneDirection9/Essay/blob/master/MarkdownImages/ResNet_Table3.png?raw=true)
 
@@ -115,7 +116,7 @@ shortcuts are identity.
 
 该网络和GoogLeNet一起，都是与众不同的连接方式，GoogLeNet的作者也结合了这两个网络发表了一篇论文。总的来说残差就是网络学习的是H(x)-x，在维度不同的时候有两个解决办法：1. zero-padding；2. projection shortcut。
 
-***
+______________________________________________________________________
 
 Author: Zhipeng Han
 
