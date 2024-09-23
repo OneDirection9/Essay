@@ -1,6 +1,6 @@
 # 引言
 
-[\<\<ImageNet Classification with Deep Convolutional Neural Networks\>\>](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf)
+[\<\<ImageNet Classification with Deep Convolutional Neural Networks>>](http://www.cs.toronto.edu/~fritz/absps/imagenet.pdf)
 
 文章比较老，但是该网络很经典。之后的ZF，VGG等网络都是在该网络基础上改造而来。
 
@@ -13,7 +13,7 @@ ZF网络的结构和Alexnet差不多。具体网络结构对比可见[这里](ht
 在ILSVRC-2010数据集上进行实验，再参加了ILSVRC-2012的比赛。ILSVRC竞赛一般用top-1和top-5来衡量模型的优劣。top-5 where the top-5 error rate is the fraction of test images for which the correct label is not among the five labels considered most probable by the model.
 
 由于卷积网络对输入图片的尺寸有固定的要求，所以我们需要对数据集的图片进行处理，将各种维度的图片转换为256\*256像素的。处理方式如下：将矩形图片的短边缩放到256像素，再居中截取256\*256大小的图片。
- 
+
 对于图片的预处理上，只采用了将图片像素值减去训练集上像素值的平均值。
 
 # 网络结构
@@ -35,6 +35,7 @@ ReLU激活函数的收敛速度比sigmod和tanh快很多。可能是由于它是
 ```math
 b_{x,y}^i = \frac{\alpha_{x,y}^i}{(k + \sum_{j=max(0,i-n/2)}^{min(N-1,i+n/2)}(\alpha_{x,y}^j)^2)^\beta}
 ```
+
 Local Response Normalization（LRN），局部归一化，具体公式见论文。`$ \alpha_{x,y}^i $` 的意思是卷积核i得到的feature map上的(x, y)坐标位置的输出。有两种LRN的方法，一个是像论文公示里面说的，通过同一个位置相邻的feature maps上进行LRN；另一个是同一个feature map上，相邻的像素点之间进行LRN。
 
 当我们使用ReLU的激活函数的时候，响应结果是无界的（可以非常大）所以需要归一化。
@@ -52,10 +53,10 @@ AlexNet在CONV1和CONV2的卷积层之后应用LRN，对卷积层的激活输出
 通过增加数据量，减少过拟合现象。
 
 1. 从上面处理得到的256\*256的图片中，遍历选取224\*224大小的图片，总共能够得到32\*32个patch，再通过水平翻转就能够得到2048个patch。在测试的时候，从图片里面选取四个角和中心的五个patch，并通过水平翻转得到10个patch，对这个10patch的预测取平均值，就是测试的输出。
-2. 改变RGB颜色通道强度。具体没看太懂
+1. 改变RGB颜色通道强度。具体没看太懂
 
-## Dropout   
-   
+## Dropout
+
 dropout，在前面两个全连接层加入了dropout技术，随机丢弃掉一些神经元。
 
 # 一些细节
@@ -72,7 +73,8 @@ dropout，在前面两个全连接层加入了dropout技术，随机丢弃掉一
 
 为什么深度网络性能如此好？回答该问题，首先从实验结果来看，较高层次提取的feature对于平移和尺度变化具有不变性（对非中心对称的旋转不具有不变性）。
 
-***
+______________________________________________________________________
+
 Author: Zhipeng Han
 
 Time: 2017/03/24
