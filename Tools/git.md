@@ -1,6 +1,10 @@
-# git-diff
+# Git
 
-https://git-scm.com/docs/git-diff
+documentation: https://git-scm.com/about
+
+## git-diff
+
+documentation: https://git-scm.com/docs/git-diff
 
 > `A` and `B` can be a commit sha or a branch name.
 
